@@ -16,7 +16,7 @@ def hello_pdf(name):
 # Alternatively, if the PDF does not have a matching HTML page:
 
 @app.route('/hello_<name>.pdf')
-def hello_pdf(name):
+def hello_pdfs(name):
     # Make a PDF straight from HTML in a string.
     html = render_template('hello.html', name=name)
     return render_pdf(HTML(string=html))
