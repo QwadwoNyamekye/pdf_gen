@@ -19,12 +19,12 @@ def generate_pdf():
     contact = data.get("contact", "")
     amount = data.get("amount", "")
     recipt_no = f"{random.randint(100000, 999999)}"
-    date = datetime.date()
+    date = datetime.now().date()
     amount_due = 600 - float(amount)
 
     # Make a PDF straight from HTML in a string.
     html = render_template(
-        "/templates/index.html",
+        "index.html",
         amount=amount,
         student_id=student_id,
         form=form,
