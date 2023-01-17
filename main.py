@@ -2,6 +2,7 @@ import base64
 from flask import Flask, render_template, request
 from flask_weasyprint import HTML, render_pdf
 from flask_cors import CORS
+import pdfkit
 
 app = Flask(__name__)
 CORS(app)
@@ -27,7 +28,8 @@ def generate_pdf():
         email=email,
         contact=contact,
     )
-    pdf = HTML(string=html).write_pdf()
+    pdf = pdfkit.from_string(html, 'out.pdf')
+    # pdf = HTML(string=html).write_pdf()
     pdf = base64.b64encode(pdf).decode('utf-8')
     return {
         "responseCode": 200,
