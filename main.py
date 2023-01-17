@@ -1,6 +1,6 @@
 import base64
 from datetime import datetime
-from random import random
+import random
 from flask import Flask, render_template, request
 from flask_cors import CORS
 import pdfkit
