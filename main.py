@@ -35,6 +35,6 @@ def generate_pdf():
         date=date,
         amount_due=amount_due,
     )
-    pdf = pdfkit.from_string(html, False)
+    pdf = pdfkit.from_string(html, False, css="static/style.css")
     pdf = base64.b64encode(pdf).decode("utf-8")
     return {"responseCode": 200, "responseMessage": "Successful", "data": pdf}
