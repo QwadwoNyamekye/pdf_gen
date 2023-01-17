@@ -28,7 +28,7 @@ def generate_pdf():
         contact=contact,
     )
     pdf = HTML(string=html).write_pdf()
-    pdf = base64.b64encode(pdf)
+    pdf = base64.b64encode(pdf).decode('utf-8')
     return {
         "responseCode": 200,
         "responseMessage":"Successful",
