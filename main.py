@@ -1,4 +1,6 @@
 import base64
+from datetime import datetime
+from random import random
 from flask import Flask, render_template, request
 from flask_weasyprint import HTML, render_pdf
 from flask_cors import CORS
@@ -17,6 +19,9 @@ def generate_pdf():
     email = data.get("email", "")
     contact = data.get("contact", "")
     amount = data.get("amount", "")
+    recipt_no = f"{random.randint(100000, 999999)}"
+    date = datetime.date()
+    amount_due = 600 - float(amount)
 
     # Make a PDF straight from HTML in a string.
     html = render_template(
@@ -27,12 +32,10 @@ def generate_pdf():
         name=name,
         email=email,
         contact=contact,
+        recipt_no=recipt_no,
+        date=date,
+        amount_due=amount_due,
     )
     pdf = pdfkit.from_string(html, False)
-    # pdf = HTML(string=html).write_pdf()
-    pdf = base64.b64encode(pdf).decode('utf-8')
-    return {
-        "responseCode": 200,
-        "responseMessage":"Successful",
-        "data":pdf
-    }
+    pdf = base64.b64encode(pdf).decode("utf-8")
+    return {"responseCode": 200, "responseMessage": "Successful", "data": pdf}

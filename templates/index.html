@@ -1,79 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <link href="css/index.css" rel="stylesheet">
-    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
-    <title>Receipt</title>
-</head>
-<body id="indexes">
-<div class="container-fluid ">
-    <nav class="navbar navbar-expand-lg py-2 fixed-top navbar-light"
-         style="background-color: rgba(21, 103, 218, 0.588);">
-        <a class="navbar-brand " href="#" style="font-size: 29px;">Melbourne</a>
-        <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
-                data-target="#navbarNav" data-toggle="collapse" type="button">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <!-- <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a> -->
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class=" row my-5 py-5 " style="height:max-content;">
-        <div class="col-sm-10 col-lg-8 col-md-8 col-xl-8 my-5 py-5 mx-auto">
-            <div class="card shadow-lg p-5  ">
-                <div class="row px-5">
-                    <div class="col-8">
-                        <h4 class="my-1">Melbourne Receipt </h4>
-                    </div>
-                    <div class="col-4">
-                        <div class="bg-info my-1 ">
-                            <img alt=""
-                                 class="img-flud float-right"
-                                 src="https://logos-download.com/wp-content/uploads/2017/11/Rotary_International_Logo_blue.png"
-                                 width="20%">
-                        </div>
-                    </div>
-                </div>
-                <div class="row pb-5 px-5 ">
-                    <div class=" mt-3 col-md-6 ">
-                        <p class="form-control">{{student_id}}</p>
-                    </div>
-                    <div class=" mt-3 col-md-6">
-                        <p class="form-control">{{form}}</p>
-                    </div>
-                    <div class=" mt-3 col-md-12">
-                        <p class="form-control">{{name}}</p>
-                    </div>
-                    <div class=" mt-3 col-md-12 ">
-                        <p class="form-control">{{email}}</p>
-                    </div>
-                    <div class=" mt-3 col-md-12 ">
-                        <p class="form-control">{{contact}}</p>
-                    </div>
-                    <div class=" mt-3 col-md-12">
-                        <p class="form-control">{{amount}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script crossorigin="anonymous"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script crossorigin="anonymous"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
-<script crossorigin="anonymous"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
-</body>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Invoice</title>
+		<link rel="stylesheet" href="/static/style.css">
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Receipt</h1>
+			<address contenteditable>
+				<p>{{form}}: {{name}}</p>
+				<p>{{student_id}}</p>
+				<p>{{email}}</p>
+				<p>{{contact}}</p>
+			</address>
+		</header>
+    
+		<article>
+			<h1>Recipient</h1>
+			<address contenteditable>
+				<p>Melbourne</p>
+			</address>
+			<table class="meta">
+				<tr>
+					<th><span contenteditable>Receipt #</span></th>
+					<td><span contenteditable>{{recipt_no}}</span></td>
+				</tr>
+				<tr>
+					<th><span contenteditable>Date</span></th>
+					<td><span contenteditable>{{date}}</span></td>
+				</tr>
+				<tr>
+					<th><span contenteditable>Amount Due</span></th>
+					<td><span id="prefix" contenteditable>Ghs</span><span> 600.00</span></td>
+				</tr>
+			</table>
+			<table class="inventory">
+				<thead>
+					<tr>
+						<th><span contenteditable>Item</span></th>
+						<th><span contenteditable>Description</span></th>
+				
+						<th><span contenteditable>Price</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><a class="cut">-</a><span contenteditable>School Fees</span></td>
+						<td><span contenteditable>Fees for Academic Year</span></td>
+						
+						<td><span data-prefix>Ghs</span><span> 600.00</span></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="balance">
+				<tr>
+					<th><span contenteditable>Total</span></th>
+					<td><span data-prefix>Ghs</span><span> 600.00</span></td>
+				</tr>
+				<tr>
+					<th><span contenteditable>Amount Paid</span></th>
+					<td><span data-prefix>Ghs </span><span contenteditable>{{amount}}</span></td>
+				</tr>
+				<tr>
+					<th><span contenteditable>Balance Due</span></th>
+					<td><span data-prefix>Ghs</span><span> {{amount_due}}</span></td>
+				</tr>
+			</table>
+		</article>
+	</body>
 </html>
