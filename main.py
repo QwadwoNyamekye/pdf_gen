@@ -3,9 +3,10 @@ from flask_weasyprint import HTML, render_pdf
 
 app = Flask(__name__)
 
-@app.route('/hello')
-def hello_html():
-    return "hello"
+@app.route('/hello/', defaults={'name': 'World'})
+@app.route('/hello/<name>/')
+def hello_html(name):
+    return render_template('hello.html', name=name)
 
 @app.route('/hello_<name>.pdf')
 def hello_pdf(name):
