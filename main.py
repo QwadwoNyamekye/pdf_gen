@@ -1,3 +1,4 @@
+import base64
 from flask import Flask, render_template, request
 from flask_weasyprint import HTML, render_pdf
 from flask_cors import CORS
@@ -26,4 +27,10 @@ def generate_pdf():
         email=email,
         contact=contact,
     )
-    return render_pdf(HTML(string=html))
+    pdf = HTML(html).write_pdf()
+    pdf = base64.b64encode(pdf)
+    return {
+        "responseCode": 200,
+        "responseMessage":"Successful",
+        "data":pdf
+    }
