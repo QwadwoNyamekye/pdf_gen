@@ -2,7 +2,6 @@ import base64
 from datetime import datetime
 from random import random
 from flask import Flask, render_template, request
-from flask_weasyprint import HTML, render_pdf
 from flask_cors import CORS
 import pdfkit
 
@@ -25,7 +24,7 @@ def generate_pdf():
 
     # Make a PDF straight from HTML in a string.
     html = render_template(
-        "index.html",
+        "/templates/index.html",
         amount=amount,
         student_id=student_id,
         form=form,
