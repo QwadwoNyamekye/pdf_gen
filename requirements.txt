@@ -22,7 +22,7 @@ pyphen==0.13.2
 six==1.16.0
 tinycss2==1.2.1
 tomli==2.0.1
-weasyprint==57.2
+weasyprint==52.5
 webencodings==0.5.1
 Werkzeug==2.2.2
 zopfli==0.2.2
