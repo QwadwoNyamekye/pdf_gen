@@ -28,7 +28,7 @@ def generate_pdf():
         email=email,
         contact=contact,
     )
-    pdf = pdfkit.from_string(html, 'out.pdf')
+    pdf = pdfkit.from_string(html, False)
     # pdf = HTML(string=html).write_pdf()
     pdf = base64.b64encode(pdf).decode('utf-8')
     return {
