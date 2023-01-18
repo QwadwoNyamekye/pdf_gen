@@ -17,15 +17,18 @@ def generate_pdf():
     name = data.get("name", "")
     email = data.get("email", "")
     contact = data.get("contact", "")
-    amount = data.get("amount", "")
+    amount_paid = float(data.get("amount_paid", ""))
     recipt_no = f"{random.randint(100000, 999999)}"
     date = datetime.now().date()
-    amount_due = 600 - float(amount)
+    amount_owed = float(data.get("amount_owed", ""))
+    amount_due = amount_owed - amount_paid
 
     # Make a PDF straight from HTML in a string.
     html = render_template(
         "index.html",
-        amount=amount,
+        amount_due=amount_due,
+        amount_owed=amount_owed,
+        amount_paid=amount_paid,
         student_id=student_id,
         form=form,
         name=name,
@@ -33,7 +36,6 @@ def generate_pdf():
         contact=contact,
         recipt_no=recipt_no,
         date=date,
-        amount_due=amount_due,
     )
     pdf = pdfkit.from_string(html, False, css="static/style.css")
     pdf = base64.b64encode(pdf).decode("utf-8")
